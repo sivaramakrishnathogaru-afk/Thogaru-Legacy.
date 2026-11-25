@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101b35">
+<title>Thogaru Legacy</title>
+
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+    font-family: Arial, sans-serif;
+      background: #101b35;
+        color: white;
+        }
+        header {
+          padding: 25px 20px;
+            background: #172544;
+              border-bottom: 1px solid #354666;
+              }
+              .brand { color: #e9c779; font-size: 25px; font-weight: bold; }
+              .tagline { color: #b8c5dc; font-size: 13px; margin-top: 7px; }
+              main { padding: 20px; max-width: 750px; margin: auto; }
+              h2 { font-size: 23px; }
+              .storage {
+                background: #203253;
+                  border-radius: 14px;
+                    padding: 18px;
+                      margin: 20px 0;
+                      }
+                      .progress {
+                        height: 9px;
+                          background: #40516e;
+                            border-radius: 20px;
+                              margin-top: 14px;
+                              }
+                              .progress div {
+                                width: 0%;
+                                  height: 100%;
+                                    background: #e9c779;
+                                      border-radius: 20px;
+                                      }
+                                      .grid {
+                                        display: grid;
+                                          grid-template-columns: repeat(2,1fr);
+                                            gap: 13px;
+                                              margin: 20px 0;
+                                              }
+                                              .item {
+                                                background: #203253;
+                                                  padding: 20px 12px;
+                                                    border-radius: 13px;
+                                                      text-align: center;
+                                                        cursor: pointer;
+                                                          border: 1px solid #354666;
+                                                          }
+                                                          .item .emoji { font-size: 30px; }
+                                                          .item h3 { margin-bottom: 5px; }
+                                                          .item p { color: #b8c5dc; font-size: 12px; }
+                                                          button {
+                                                            background: #e9c779;
+                                                              color: #172544;
+                                                                border: 0;
+                                                                  border-radius: 9px;
+                                                                    padding: 13px 18px;
+                                                                      font-weight: bold;
+                                                                        cursor: pointer;
+                                                                        }
+                                                                        .upload {
+                                                                          background: #203253;
+                                                                            padding: 20px;
+                                                                              border-radius: 13px;
+                                                                                text-align: center;
+                                                                                  margin: 20px 0;
+                                                                                  }
+                                                                                  input[type=file] { display: none; }
+                                                                                  #search {
+                                                                                    width: 100%;
+                                                                                      padding: 13px;
+                                                                                        border-radius: 9px;
+                                                                                          border: 1px solid #40516e;
+                                                                                            background: #203253;
+                                                                                              color: white;
+                                                                                                margin: 12px 0;
+                                                                                                }
+                                                                                                .file {
+                                                                                                  background: #203253;
+                                                                                                    border-radius: 9px;
+                                                                                                      padding: 13px;
+                                                                                                        margin: 9px 0;
+                                                                                                          overflow-wrap: anywhere;
+                                                                                                          }
+                                                                                                          small { color: #b8c5dc; }
+                                                                                                          footer {
+                                                                                                            text-align: center;
+                                                                                                              padding: 25px;
+                                                                                                                color: #b8c5dc;
+                                                                                                                  font-size: 12px;
+                                                                                                                  }
+                                                                                                                  </style>
+                                                                                                                  </head>
+
+                                                                                                                  <body>
+                                                                                                                  <header>
+                                                                                                                    <div class="brand">☁ THOGARU LEGACY</div>
+                                                                                                                      <div class="tagline">Your Digital World. Your Legacy.</div>
+                                                                                                                      </header>
+
+                                                                                                                      <main>
+                                                                                                                        <h2>Welcome to Your Vault 👋</h2>
+                                                                                                                          <p style="color:#b8c5dc">Your personal digital storage space.</p>
+
+                                                                                                                            <section class="storage">
+                                                                                                                                <h3>My Storage</h3>
+                                                                                                                                    <h2 id="used">0 Files</h2>
+                                                                                                                                        <small>Files selected in this session</small>
+                                                                                                                                            <div class="progress"><div></div></div>
+                                                                                                                                              </section>
+
+                                                                                                                                                <h3>My Categories</h3>
+                                                                                                                                                  <section class="grid">
+                                                                                                                                                      <div class="item" onclick="filterFiles('image')">
+                                                                                                                                                            <div class="emoji">📸</div>
+                                                                                                                                                                  <h3>Photos</h3>
+                                                                                                                                                                        <p>My pictures</p>
+                                                                                                                                                                            </div>
+                                                                                                                                                                                <div class="item" onclick="filterFiles('video')">
+                                                                                                                                                                                      <div class="emoji">🎬</div>
+                                                                                                                                                                                            <h3>Videos</h3>
+                                                                                                                                                                                                  <p>My videos</p>
+                                                                                                                                                                                                      </div>
+                                                                                                                                                                                                          <div class="item" onclick="filterFiles('pdf')">
+                                                                                                                                                                                                                <div class="emoji">📄</div>
+                                                                                                                                                                                                                      <h3>Documents</h3>
+                                                                                                                                                                                                                            <p>PDF and files</p>
+                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                    <div class="item" onclick="filterFiles('all')">
+                                                                                                                                                                                                                                          <div class="emoji">📁</div>
+                                                                                                                                                                                                                                                <h3>All Files</h3>
+                                                                                                                                                                                                                                                      <p>My complete vault</p>
+                                                                                                                                                                                                                                                          </div>
+                                                                                                                                                                                                                                                            </section>
+
+                                                                                                                                                                                                                                                              <section class="upload">
+                                                                                                                                                                                                                                                                  <div style="font-size:35px">☁️</div>
+                                                                                                                                                                                                                                                                      <h3>Upload Your Files</h3>
+                                                                                                                                                                                                                                                                          <p style="color:#b8c5dc">Select photos, videos or documents.</p>
+                                                                                                                                                                                                                                                                              <label for="files">
+                                                                                                                                                                                                                                                                                    <button type="button">＋ Choose Files</button>
+                                                                                                                                                                                                                                                                                        </label>
+                                                                                                                                                                                                                                                                                            <input id="files" type="file" multiple
+                                                                                                                                                                                                                                                                                                  accept="image/*,video/*,.pdf,.doc,.docx,.xls,.xlsx,.txt">
+                                                                                                                                                                                                                                                                                                      <p id="message"><small>Local preview prototype only</small></p>
+                                                                                                                                                                                                                                                                                                        </section>
+
+                                                                                                                                                                                                                                                                                                          <h3>My Files</h3>
+                                                                                                                                                                                                                                                                                                            <input id="search" placeholder="🔍 Search files..." oninput="renderFiles()">
+                                                                                                                                                                                                                                                                                                              <div id="fileList">
+                                                                                                                                                                                                                                                                                                                  <p style="color:#b8c5dc">No files selected yet.</p>
+                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                    </main>
+
+                                                                                                                                                                                                                                                                                                                    <footer>© 2026 Thogaru Legacy · Your Digital World. Your Legacy.</footer>
+
+                                                                                                                                                                                                                                                                                                                    <script>
+                                                                                                                                                                                                                                                                                                                    let files = [];
+                                                                                                                                                                                                                                                                                                                    let currentFilter = 'all';
+
+                                                                                                                                                                                                                                                                                                                    document.getElementById('files').addEventListener('change', function(e) {
+                                                                                                                                                                                                                                                                                                                      for (const file of e.target.files) {
+                                                                                                                                                                                                                                                                                                                          files.push(file);
+                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                              document.getElementById('message').textContent =
+                                                                                                                                                                                                                                                                                                                                  files.length + ' files selected';
+                                                                                                                                                                                                                                                                                                                                    renderFiles();
+                                                                                                                                                                                                                                                                                                                                      e.target.value = '';
+                                                                                                                                                                                                                                                                                                                                      });
+
+                                                                                                                                                                                                                                                                                                                                      function filterFiles(type) {
+                                                                                                                                                                                                                                                                                                                                        currentFilter = type;
+                                                                                                                                                                                                                                                                                                                                          renderFiles();
+                                                                                                                                                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                                                                                                                                                          function renderFiles() {
+                                                                                                                                                                                                                                                                                                                                            const search = document.getElementById('search').value.toLowerCase();
+                                                                                                                                                                                                                                                                                                                                              const list = document.getElementById('fileList');
+
+                                                                                                                                                                                                                                                                                                                                                const filtered = files.filter(file => {
+                                                                                                                                                                                                                                                                                                                                                    const name = file.name.toLowerCase();
+                                                                                                                                                                                                                                                                                                                                                        const type = file.type.toLowerCase();
+                                                                                                                                                                                                                                                                                                                                                            let matches = currentFilter === 'all' ||
+                                                                                                                                                                                                                                                                                                                                                                  (currentFilter === 'image' && type.startsWith('image/')) ||
+                                                                                                                                                                                                                                                                                                                                                                        (currentFilter === 'video' && type.startsWith('video/')) ||
+                                                                                                                                                                                                                                                                                                                                                                              (currentFilter === 'pdf' &&
+                                                                                                                                                                                                                                                                                                                                                                                     (type.includes('pdf') || /\.(docx?|xlsx?|txt)$/i.test(name)));
+                                                                                                                                                                                                                                                                                                                                                                                         return matches && name.includes(search);
+                                                                                                                                                                                                                                                                                                                                                                                           });
+
+                                                                                                                                                                                                                                                                                                                                                                                             document.getElementById('used').textContent =
+                                                                                                                                                                                                                                                                                                                                                                                                 files.length + ' Files';
+
+                                                                                                                                                                                                                                                                                                                                                                                                   list.innerHTML = '';
+
+                                                                                                                                                                                                                                                                                                                                                                                                     if (!filtered.length) {
+                                                                                                                                                                                                                                                                                                                                                                                                         list.innerHTML = '<p style="color:#b8c5dc">No matching files.</p>';
+                                                                                                                                                                                                                                                                                                                                                                                                             return;
+                                                                                                                                                                                                                                                                                                                                                                                                               }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                 filtered.forEach(file => {
+                                                                                                                                                                                                                                                                                                                                                                                                                     const div = document.createElement('div');
+                                                                                                                                                                                                                                                                                                                                                                                                                         div.className = 'file';
+                                                                                                                                                                                                                                                                                                                                                                                                                             const name = document.createElement('strong');
+                                                                                                                                                                                                                                                                                                                                                                                                                                 name.textContent = '📄 ' + file.name;
+                                                                                                                                                                                                                                                                                                                                                                                                                                     const size = document.createElement('p');
+                                                                                                                                                                                                                                                                                                                                                                                                                                         size.textContent = (file.size / 1024 / 1024).toFixed(2) + ' MB';
+                                                                                                                                                                                                                                                                                                                                                                                                                                             size.style.color = '#b8c5dc';
+                                                                                                                                                                                                                                                                                                                                                                                                                                                 div.append(name, size);
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                     if (file.type.startsWith('image/')) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                           const img = document.createElement('img');
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                 img.src = URL.createObjectURL(file);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                       img.style.cssText = 'width:100%;max-height:180px;object-fit:contain;margin-top:10px';
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                             div.appendChild(img);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     list.appendChild(div);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       });
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       </script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       </body>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       </html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
